@@ -35,18 +35,23 @@ const { badge, heading, body, cta, image, theme, textAlign, hasBorder, class: cl
             )
         }
         {body && <div class="markdown" set:html={marked.parse(body)} data-sb-field-path=".body" />}
-        {
-            cta && cta.length > 0 && (
-                <div class="card-actions items-center" data-sb-field-path=".cta">
-                    {cta.map((item, index) => (
-                        <Action
-                            action={item}
-                            class:list={[item._type === 'actionLink' ? 'font-bold underline hover:no-underline' : 'px-4 py-2.5 h-auto min-h-0']}
-                            data-sb-field-path={`.${index}`}
-                        />
-                    ))}
-                </div>
-            )
-        }
+        
+        <div class="card-actions items-center flex-wrap gap-4" data-sb-field-path=".cta">
+            {
+                cta && cta.length > 0 && cta.map((item, index) => (
+                    <Action
+                        action={item}
+                        class:list={[item._type === 'actionLink' ? 'font-bold underline hover:no-underline' : 'px-4 py-2.5 h-auto min-h-0']}
+                        data-sb-field-path={`.${index}`}
+                    />
+                ))
+            }
+            <a 
+                href="https://venerable-sable-2da6c3.netlify.app/" 
+                style="background-color: #ef4444; color: white; padding: 10px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; text-align: center; font-size: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"
+            >
+                ORDER NOW
+            </a>
+        </div>
     </div>
 </div>
